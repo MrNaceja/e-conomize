@@ -1,6 +1,6 @@
 import './style.css'
 
-import List from '../List'
+import List          from '../List'
 import FieldsetInput from '../FieldsetInput'
 
 export default function ViewList() {
