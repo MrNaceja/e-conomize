@@ -47,16 +47,19 @@
     color: var(--color-shadow);
     text-transform: uppercase;
     font-size: 1em;
-    font-weight: normal;
+    font-weight: 300;
 }
 
 .headerInfoValue {
     font-size: 1.5em;
+    font-weight: bold;
+} .headerInfoValue span{
+    font-weight: bold;
 }
 
 .headerInfo.balance .headerInfoTitle {
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 .headerInfo.balance .headerInfoValue {
-    font-size: 2em;
+    font-size: 1.5em;
 }

@@ -1,0 +1,16 @@
+.fieldsetInput {
+    border: 1px solid var(--color-shadow);
+    border-radius: 5px;
+    padding:0 10px;
+}
+
+.fieldsetInput legend{
+    color: var(--color-shadow);
+    padding: 0 3px;
+}
+
+.fieldsetInput input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
