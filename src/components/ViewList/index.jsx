@@ -1,13 +1,13 @@
-import './style.css'
+import styles from './style.module.css'
 
 import List          from '../List'
 import FieldsetInput from '../FieldsetInput'
 
 export default function ViewList() {
     return (
-        <section className='viewList'>
-            <div className='inputArea'>
-            <div className='inputData'>
+        <section className={styles.viewList}>
+            <div className={styles.inputArea}>
+            <div className={styles.inputData}>
                 <FieldsetInput 
                     title='nome'
                     inputType='text'

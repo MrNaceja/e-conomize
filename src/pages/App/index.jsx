@@ -1,4 +1,4 @@
-import './style.css'
+import styles   from './style.module.css'
 import Logo     from '../../components/Logo'
 import Header   from '../../components/Header'
 import ViewList from '../../components/ViewList'
@@ -8,7 +8,7 @@ import InfoContext from '../../Contexts'
 export default function App() {
   return (
     <InfoContext.Provider>
-      <div className="appContainer">
+      <div className={styles.appContainer}>
         <Logo/>
         <Header/>
         <ViewList/>
