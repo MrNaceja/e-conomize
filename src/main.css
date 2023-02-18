@@ -12,13 +12,15 @@
   --color-primary-opacity:#07bb3a21;
   --color-secondary: #DD0A23;
   --color-secondary-opacity:#dd0a2321;
-  font-size: 16px;
-
 }
 
 body{
   background: var(--color-light-secondary);
   min-height: 100vh;
+}
+
+body, input, button {
+  font-size: 1rem;
 }
 
 * {

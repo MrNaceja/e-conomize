@@ -1,7 +1,8 @@
 import styles from './style.module.css'
+import economizeLogo from '../../assets/economizeLogo.svg'
 
 export default function Logo() {
     return (
-        <h1 className={styles.logo}>e<span>$</span>nomize</h1>
+        <img className={styles.logo} src={economizeLogo} alt="Logo do e-conomize" />
     )
 }
