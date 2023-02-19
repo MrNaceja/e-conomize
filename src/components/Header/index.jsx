@@ -2,23 +2,22 @@ import styles from './style.module.css'
 
 import HeaderInfo from '../HeaderInfo'
 
+import EnumTypeInfo from '../../Enum/EnumTypeInfo.json'
+
 export default function Header() {
     return (
         <header className={styles.header}>
-            <HeaderInfo 
-                typeInfo="balance" 
-                title="Saldo Atual"
-            />
+            <HeaderInfo title="Saldo Atual" key = {EnumTypeInfo.TYPE_INFO_BALANCE}/>
             <nav>
                 <HeaderInfo 
-                    typeInfo="performance" 
+                key = {EnumTypeInfo.TYPE_INFO_PERFORMANCE}
+                    typeInfo={EnumTypeInfo.TYPE_INFO_PERFORMANCE}
                     title="Receitas"
-                    onClickFn = {()=>alert('hey')}
                  />
                 <HeaderInfo 
-                    typeInfo="expense" 
+                key = {EnumTypeInfo.TYPE_INFO_EXPENSE}
+                    typeInfo={EnumTypeInfo.TYPE_INFO_EXPENSE}
                     title="Despesas"    
-                    onClickFn = {()=>alert('ola')}
                 />
             </nav>
         </header>

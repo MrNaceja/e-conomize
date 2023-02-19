@@ -1,0 +1,5 @@
+{
+    "TYPE_INFO_BALANCE"    : "balance",
+    "TYPE_INFO_PERFORMANCE": "performance",
+    "TYPE_INFO_EXPENSE"    : "expense"
+}

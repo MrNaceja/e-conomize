@@ -16,6 +16,7 @@
 
 .itemListValue {
     font-weight: bold;
+    color: var(--color-shadow);
     font-size: 1.2em;
 } .itemListValue span {
     font-weight: bold; 
@@ -28,9 +29,9 @@
     font-weight: 300;
 }
 
-.itemListValue.performance {
-    color: green;
+.itemListPerformance .itemListValue {
+    color: var(--color-primary)
 }
-.itemListValue.expense {
-    color: red;
+.itemListExpense .itemListValue {
+    color: var(--color-secondary)
 }

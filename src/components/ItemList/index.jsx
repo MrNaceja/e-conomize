@@ -1,6 +1,6 @@
 import styles from './style.module.css'
 
-export default function ItemList({typeClass, itemData}) {
+export default function ItemList({itemData}) {
     return (
         <li className={styles.itemList}>
             <h1 className={styles.itemListName}>Receita/Despesa aqui</h1>

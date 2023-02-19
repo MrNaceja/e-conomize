@@ -6,7 +6,7 @@
 
 .fieldsetInput legend{
     color: var(--color-shadow);
-    padding: 0 3px;
+    padding: 0 5px;
 }
 
 .fieldsetInput input {
