@@ -26,6 +26,13 @@
     color: var(--color-primary);
 }
 
+.headerInfoPerformance[role=infoSelected]::after {
+    background: var(--color-primary);
+}
+.headerInfoExpense[role=infoSelected]::after {
+    background: var(--color-secondary);
+}
+
 .headerInfoExpense .headerInfoValue{
     color: var(--color-secondary);
 }

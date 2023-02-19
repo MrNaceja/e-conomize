@@ -11,7 +11,7 @@ export default function List() {
     const {selectedInfo} = useContext(ContextSelectedInfo)
     
     return (
-        <ul className={selectedInfo === 'expense' ? styles.listTest : styles.list}>
+        <ul className={styles.list}>
             <ItemList />
             <ItemList />
             <ItemList />

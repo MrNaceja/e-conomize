@@ -1,23 +1,29 @@
 import styles from './style.module.css'
 
+import { useContext } from 'react'
+import ContextSelectedInfo from '../../Contexts/ContextSelectedInfo'
+
 import HeaderInfo from '../HeaderInfo'
 
 import EnumTypeInfo from '../../Enum/EnumTypeInfo.json'
 
 export default function Header() {
+
+    const {selectedInfo} = useContext(ContextSelectedInfo)
+
     return (
         <header className={styles.header}>
-            <HeaderInfo title="Saldo Atual" key = {EnumTypeInfo.TYPE_INFO_BALANCE}/>
+            <HeaderInfo title="Saldo Atual" hasClickAction = {false}/>
             <nav>
                 <HeaderInfo 
-                key = {EnumTypeInfo.TYPE_INFO_PERFORMANCE}
                     typeInfo={EnumTypeInfo.TYPE_INFO_PERFORMANCE}
                     title="Receitas"
+                    selected = {selectedInfo == EnumTypeInfo.TYPE_INFO_PERFORMANCE}
                  />
                 <HeaderInfo 
-                key = {EnumTypeInfo.TYPE_INFO_EXPENSE}
                     typeInfo={EnumTypeInfo.TYPE_INFO_EXPENSE}
-                    title="Despesas"    
+                    title="Despesas" 
+                    selected = {selectedInfo == EnumTypeInfo.TYPE_INFO_EXPENSE}
                 />
             </nav>
         </header>

@@ -5,10 +5,8 @@ import ContextSelectedInfo from '../../Contexts/ContextSelectedInfo'
 
 import EnumTypeInfo from '../../Enum/EnumTypeInfo.json'
 
-export default function HeaderInfo({typeInfo = EnumTypeInfo.TYPE_INFO_BALANCE, title}) {
-    
+export default function HeaderInfo({typeInfo = EnumTypeInfo.TYPE_INFO_BALANCE, title, hasClickAction = true, selected = false}) {
     const {setSelectedInfo} = useContext(ContextSelectedInfo)
-    
     let cssClassHeaderInfoByTypeInfo = styles.headerInfoBalance
     switch (typeInfo) {
         case EnumTypeInfo.TYPE_INFO_PERFORMANCE:
@@ -20,10 +18,17 @@ export default function HeaderInfo({typeInfo = EnumTypeInfo.TYPE_INFO_BALANCE, t
         default: cssClassHeaderInfoByTypeInfo = styles.headerInfoBalance
     }
 
+    function handleClickSelectInfo() {
+        if (hasClickAction) {
+            setSelectedInfo(typeInfo)
+        }
+    }
+
     return (
         <div 
+        role={selected && 'infoSelected'}
         className={styles.headerInfo + ` ${cssClassHeaderInfoByTypeInfo}`}
-        onClick = {() => { setSelectedInfo(typeInfo) }}>
+        onClick = {handleClickSelectInfo}>
             <h1 className={styles.headerInfoTitle}>{title}</h1>
             <h2 className={styles.headerInfoValue}><span>R$</span>0,00</h2>
         </div>
