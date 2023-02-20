@@ -1,0 +1,59 @@
+.viewListInfoContainer {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 20px 20px;
+    row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+    animation: showSelected 1.4s;
+}
+
+.viewListInfoContainer:not(.infoSelected) {
+    display: none;
+}
+
+@keyframes showSelected {
+    from {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(2rem)
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0)
+    }
+}
+
+.inputArea {
+    width: 100%;
+    height:4em;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    column-gap:1em;
+}.inputArea .inputData {
+    flex-direction: row;
+    height: 100%;
+    display: flex;
+    width: 80%;
+    column-gap:1em;
+}
+
+.inputArea button {
+    border:none;
+    outline: none;
+    height: 100%;
+    width: 20%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.infoExpense .inputArea button {
+    background: var(--color-secondary-opacity);
+    color: var(--color-secondary);
+}
+.infoPerformance .inputArea button {
+    background: var(--color-primary-opacity);
+    color: var(--color-primary);
+}

@@ -1,27 +1,20 @@
 import styles from './style.module.css'
 
-import List          from '../List'
-import FieldsetInput from '../FieldsetInput'
+import ViewListInfo from '../ViewListInfo'
+
+import { useContext } from 'react'
+
+import ContextSelectedInfo from '../../Contexts/ContextSelectedInfo'
+import EnumTypeInfo from '../../Enum/EnumTypeInfo.json'
 
 export default function ViewList() {
+
+    const {selectedInfo} = useContext(ContextSelectedInfo)
+
     return (
         <section className={styles.viewList}>
-            <div className={styles.inputArea}>
-            <div className={styles.inputData}>
-                <FieldsetInput 
-                    title='nome'
-                    inputType='text'
-                    widthField='60%'
-                />
-                <FieldsetInput 
-                    title='valor'
-                    inputType='number'
-                    widthField='40%'
-                />
-            </div>
-            <button>+</button>
-            </div>
-            <List/>
+            <ViewListInfo selected = {selectedInfo == EnumTypeInfo.TYPE_INFO_PERFORMANCE}/>
+            <ViewListInfo selected = {selectedInfo == EnumTypeInfo.TYPE_INFO_EXPENSE}/>
         </section>
     )
 }

@@ -1,0 +1,12 @@
+{
+    "COLOR-LIGHT-PRIMARY"     : "#FFFFFF",
+    "COLOR-LIGHT-SECONDARY"   : "#f6f6f6",
+    "COLOR-SHADOW"            : "#ACACAC",
+    "COLOR-SHADOW-OPACITY"    : "#acacac21",
+    "COLOR-DARK-PRIMARY"      : "#181818",
+    "COLOR-DARK-SECONDARY"    : "#202020",
+    "COLOR-PRIMARY"           : "#07BB39",
+    "COLOR-PRIMARY-OPACITY"   : "#07bb3a21",
+    "COLOR-SECONDARY"         : "#DD0A23",
+    "COLOR-SECONDARY-OPACITY" : "#dd0a2321"
+}

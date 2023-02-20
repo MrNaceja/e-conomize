@@ -26,7 +26,7 @@ export default function HeaderInfo({typeInfo = EnumTypeInfo.TYPE_INFO_BALANCE, t
 
     return (
         <div 
-        role={selected && 'infoSelected'}
+        role={selected ? 'infoSelected' : 'infoNotSelected'}
         className={styles.headerInfo + ` ${cssClassHeaderInfoByTypeInfo}`}
         onClick = {handleClickSelectInfo}>
             <h1 className={styles.headerInfoTitle}>{title}</h1>
