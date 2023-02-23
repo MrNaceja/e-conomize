@@ -6,7 +6,7 @@ import ContextSelectedInfo from '../../Contexts/ContextSelectedInfo'
 import EnumTypeInfo from '../../Enum/EnumTypeInfo.json'
 import EnumCoresMain from '../../Enum/EnumCoresMain.json'
 
-export default function ItemList({itemData}) {
+export default function ItemList({name, value, insertAt}) {
 
     const {selectedInfo} = useContext(ContextSelectedInfo)
     
@@ -18,16 +18,23 @@ export default function ItemList({itemData}) {
         colorInfo = EnumCoresMain['COLOR-SECONDARY']
     }
 
+    const dateFormatted = insertAt.toLocaleString('pt-BR', {
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric'
+    })
+
     return (
         <li className={styles.itemList}>
-            <h1 className={styles.itemListName}>Receita/Despesa aqui</h1>
+            <h1 className={styles.itemListName}>{name}</h1>
             <h2 
                 style={{color: colorInfo}}
                 className={styles.itemListValue}
             ><span>
-                R$</span>1.233,98
+                R$</span>{parseFloat(value).toFixed(2)}
             </h2>
-            <h6 className={styles.itemListDate}>16/02/2023</h6>
+            <h6 className={styles.itemListDate}>{dateFormatted}</h6>
         </li>
     )
 }

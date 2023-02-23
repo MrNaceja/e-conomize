@@ -16,7 +16,7 @@
 
 body{
   background: var(--color-light-secondary);
-  min-height: 100vh;
+  max-height: 100vh;
   overflow: hidden;
 }
 

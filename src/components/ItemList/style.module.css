@@ -12,14 +12,15 @@
 .itemListName {
     color: var(--color-shadow);
     font-size: 1em;
+    font-weight: bold;
 }
 
 .itemListValue {
-    font-weight: bold;
+    font-weight: normal; 
     color: var(--color-shadow);
     font-size: 1.2em;
 } .itemListValue span {
-    font-weight: bold; 
+    font-weight: normal; 
 }
 
 .itemListDate {
@@ -27,11 +28,4 @@
     right: 2em;
     color: var(--color-shadow);
     font-weight: 300;
-}
-
-.itemListPerformance .itemListValue {
-    color: var(--color-primary)
-}
-.itemListExpense .itemListValue {
-    color: var(--color-secondary)
 }
