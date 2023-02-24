@@ -6,17 +6,20 @@ import ContextSelectedInfo from '../../Contexts/ContextSelectedInfo'
 import EnumTypeInfo from '../../Enum/EnumTypeInfo.json'
 
 export default function HeaderInfo({typeInfo = EnumTypeInfo.TYPE_INFO_BALANCE, title, hasClickAction = true, selected = false}) {
-    const {setSelectedInfo} = useContext(ContextSelectedInfo)
+    const {setSelectedInfo, valuePerformance, valueExpense} = useContext(ContextSelectedInfo)
     let cssClassHeaderInfoByTypeInfo = styles.headerInfoBalance
+    let valueInfo = valuePerformance - valueExpense;
     switch (typeInfo) {
         case EnumTypeInfo.TYPE_INFO_PERFORMANCE:
             cssClassHeaderInfoByTypeInfo = styles.headerInfoPerformance
+            valueInfo = valuePerformance
             break
         case EnumTypeInfo.TYPE_INFO_EXPENSE:
             cssClassHeaderInfoByTypeInfo = styles.headerInfoExpense
-            break
-        default: cssClassHeaderInfoByTypeInfo = styles.headerInfoBalance
+            valueInfo = valueExpense
     }
+    
+    let valueInfoFormattted = parseFloat(valueInfo.toFixed(2)).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
 
     function onClickSelectInfo() {
         if (hasClickAction) {
@@ -30,7 +33,7 @@ export default function HeaderInfo({typeInfo = EnumTypeInfo.TYPE_INFO_BALANCE, t
         className={styles.headerInfo + ` ${cssClassHeaderInfoByTypeInfo}`}
         onClick = {onClickSelectInfo}>
             <h1 className={styles.headerInfoTitle}>{title}</h1>
-            <h2 className={styles.headerInfoValue}><span>R$</span>0,00</h2>
+            <h2 className={styles.headerInfoValue}>{valueInfoFormattted}</h2>
         </div>
     )
 }

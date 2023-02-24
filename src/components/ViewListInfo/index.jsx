@@ -11,12 +11,34 @@ import EnumTypeInfo from '../../Enum/EnumTypeInfo.json'
 
 export default function ViewListInfo({selected}) {
 
-    const {selectedInfo} = useContext(ContextSelectedInfo)
+    const {
+        selectedInfo, 
+        setValuePerformance, 
+        setValueExpense,
+        valueExpense,
+        valuePerformance
+    } = useContext(ContextSelectedInfo)
 
     const [info, setInfo] = useState([])
 
     const [nameInfo, setNameInfo]   = useState('');
     const [valueInfo, setValueInfo] = useState('');
+
+    let cssClassTypeInfo   = '';
+    let nameSelectedInfo   = '';
+    let newListInfo        = []
+    let newValueHeaderInfoSelected = 0;
+
+    switch(selectedInfo){
+        case EnumTypeInfo.TYPE_INFO_EXPENSE:
+            cssClassTypeInfo = styles.infoExpense;
+            nameSelectedInfo = 'Despesa'
+        break
+        case EnumTypeInfo.TYPE_INFO_PERFORMANCE:
+            cssClassTypeInfo = styles.infoPerformance;
+            nameSelectedInfo = 'Receita'
+        break
+    }
 
     function onChangeNameInfo(newName) {
         setNameInfo(newName)
@@ -29,23 +51,33 @@ export default function ViewListInfo({selected}) {
         if (nameInfo === '' || valueInfo === '') {
            return alert('Preencha os campos para adicionar uma informação!')
         }
-        setInfo([...info, {
+        newListInfo = [...info, {
             name: nameInfo,
             value: valueInfo,
             insertAt: new Date()
-        }])
+        }]
+        setInfo(newListInfo)
         setNameInfo('')
         setValueInfo('')
+        updateHeaderInfo()
+        saveDataOnLocalStorage()
     }
 
-    let cssClassTypeInfo = '';
-    switch(selectedInfo){
-        case EnumTypeInfo.TYPE_INFO_EXPENSE:
-            cssClassTypeInfo = styles.infoExpense;
-        break
-        case EnumTypeInfo.TYPE_INFO_PERFORMANCE:
-            cssClassTypeInfo = styles.infoPerformance;
-        break
+    function updateHeaderInfo() {
+        newListInfo.forEach(item => {
+            newValueHeaderInfoSelected  += parseFloat(item.value)
+        })
+        switch(selectedInfo){
+            case EnumTypeInfo.TYPE_INFO_EXPENSE:
+                return setValueExpense(newValueHeaderInfoSelected)
+            case EnumTypeInfo.TYPE_INFO_PERFORMANCE:
+                return setValuePerformance(newValueHeaderInfoSelected)
+        }
+    }
+
+    function saveDataOnLocalStorage() {
+        localStorage.setItem(selectedInfo, newValueHeaderInfoSelected)
+        localStorage.setItem('list_' + selectedInfo, JSON.stringify(newListInfo))
     }
 
     if (selected) {
@@ -59,18 +91,20 @@ export default function ViewListInfo({selected}) {
             <div className={styles.inputArea}>
                 <div className={styles.inputData}>
                     <FieldsetInput 
-                        title='nome'
+                        title={nameSelectedInfo}
                         inputType='text'
                         widthField='60%'
                         value={nameInfo}
                         onChange={onChangeNameInfo}
+                        placeholder={'informe um nome para a ' + nameSelectedInfo.toLowerCase()}
                     />
                     <FieldsetInput 
-                        title='valor'
+                        title='Valor'
                         inputType='number'
                         widthField='40%'
                         value={valueInfo}
                         onChange={onChangeValueInfo}
+                        placeholder={'R$'}
                     />
                 </div>
                 <button type='button' onClick={onClickAddInfo}>+</button>
