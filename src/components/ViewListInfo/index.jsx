@@ -9,25 +9,16 @@ import ContextSelectedInfo from '../../Contexts/ContextSelectedInfo'
 
 import EnumTypeInfo from '../../Enum/EnumTypeInfo.json'
 
-export default function ViewListInfo({selected}) {
+export default function ViewListInfo({selected, listInfo, setListInfo}) {
 
-    const {
-        selectedInfo, 
-        setValuePerformance, 
-        setValueExpense,
-        valueExpense,
-        valuePerformance
-    } = useContext(ContextSelectedInfo)
+    const {selectedInfo} = useContext(ContextSelectedInfo)
 
-    const [info, setInfo] = useState([])
-
-    const [nameInfo, setNameInfo]   = useState('');
+    const [nameInfo , setNameInfo]  = useState('');
     const [valueInfo, setValueInfo] = useState('');
 
     let cssClassTypeInfo   = '';
     let nameSelectedInfo   = '';
     let newListInfo        = []
-    let newValueHeaderInfoSelected = 0;
 
     switch(selectedInfo){
         case EnumTypeInfo.TYPE_INFO_EXPENSE:
@@ -51,33 +42,14 @@ export default function ViewListInfo({selected}) {
         if (nameInfo === '' || valueInfo === '') {
            return alert('Preencha os campos para adicionar uma informação!')
         }
-        newListInfo = [...info, {
+        newListInfo = [...listInfo, {
             name: nameInfo,
-            value: valueInfo,
+            value: parseFloat(valueInfo),
             insertAt: new Date()
         }]
-        setInfo(newListInfo)
+        setListInfo(newListInfo)
         setNameInfo('')
         setValueInfo('')
-        updateHeaderInfo()
-        saveDataOnLocalStorage()
-    }
-
-    function updateHeaderInfo() {
-        newListInfo.forEach(item => {
-            newValueHeaderInfoSelected  += parseFloat(item.value)
-        })
-        switch(selectedInfo){
-            case EnumTypeInfo.TYPE_INFO_EXPENSE:
-                return setValueExpense(newValueHeaderInfoSelected)
-            case EnumTypeInfo.TYPE_INFO_PERFORMANCE:
-                return setValuePerformance(newValueHeaderInfoSelected)
-        }
-    }
-
-    function saveDataOnLocalStorage() {
-        localStorage.setItem(selectedInfo, newValueHeaderInfoSelected)
-        localStorage.setItem('list_' + selectedInfo, JSON.stringify(newListInfo))
     }
 
     if (selected) {
@@ -111,9 +83,9 @@ export default function ViewListInfo({selected}) {
             </div>
             <ul className={styles.list}>
                {
-               info.length == 0 
+               listInfo.length == 0 
                ? <h1 className={styles.msgListEmpty}>Não há informações inseridas, adicione acima ;)</h1>
-               : info.map((item) => {
+               : listInfo.map((item) => {
                 return <ItemList 
                     key={item.insertAt.toLocaleString()}
                     name = { item.name }
