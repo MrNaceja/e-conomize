@@ -3,10 +3,14 @@
     height: max-content;
     width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: .2s;
+}
+.itenList header {
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
-    position: relative;
 }
 
 .itemListName {
@@ -23,9 +27,29 @@
     font-weight: normal; 
 }
 
-.itemListDate {
-    position: absolute;
-    right: 2em;
+footer {
+    display: flex;
+    align-items: center;
+    transform: translateX(70px);
+    transition: .2s;
+}
+
+.itemList:hover footer {
+    transform: translateX(0)
+}
+
+footer h6 {
     color: var(--color-shadow);
     font-weight: 300;
+}
+
+footer button {
+    height: 60px;
+    width:60px;
+    background: var(--color-secondary-opacity);
+    border:none;
+    outline: none;
+    color: var(--color-secondary);
+    cursor:pointer;
+    margin-left:5px;
 }

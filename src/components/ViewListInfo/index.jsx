@@ -38,7 +38,7 @@ export default function ViewListInfo({selected, listInfo, setListInfo}) {
         setValueInfo(newValue)
     }
 
-    function onClickAddInfo() {
+    function addInfo() {
         if (nameInfo === '' || valueInfo === '') {
            return alert('Preencha os campos para adicionar uma informação!')
         }
@@ -50,6 +50,13 @@ export default function ViewListInfo({selected, listInfo, setListInfo}) {
         setListInfo(newListInfo)
         setNameInfo('')
         setValueInfo('')
+    }
+
+    function deleteInfo(key) {
+        newListInfo = listInfo.filter(info => {
+            return info.insertAt.toLocaleString() !== key
+        });
+        setListInfo(newListInfo);
     }
 
     if (selected) {
@@ -79,7 +86,7 @@ export default function ViewListInfo({selected, listInfo, setListInfo}) {
                         placeholder={'R$'}
                     />
                 </div>
-                <button type='button' onClick={onClickAddInfo}>+</button>
+                <button type='button' onClick={addInfo}>+</button>
             </div>
             <ul className={styles.list}>
                {
@@ -91,6 +98,7 @@ export default function ViewListInfo({selected, listInfo, setListInfo}) {
                     name = { item.name }
                     value = { item.value }
                     insertAt = { item.insertAt }
+                    deleteInfo = {deleteInfo}
                 />
                })}
             </ul>
